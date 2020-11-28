@@ -29,19 +29,19 @@ const Form = () => {
             <input name="name" onChange={handleChange} type="text" placeholder="Name" />
           </div>
           <div className={classes.inputField}>
-                <input name="surname" onChange={handleChange} type="text" placeholder="Surmane" />
-            </div>
-            <div className={classes.inputField}>
-                <input name="birthDate" onChange={handleChange} type="date" />
-            </div>
-            <div className={classes.inputField}>
-                <select onChange={handleChange} name="select" className={classes.select}>
-                    <option value="Star">&#9733;</option>
-                    <option value="Heart">&#10084;</option>
-                    <option value="Octagon">&#11042;</option>
-                </select>
-            </div>
-            <input type="submit" value="Send" className={classes.btn} />
+              <input name="surname" onChange={handleChange} type="text" placeholder="Surmane" />
+          </div>
+          <div className={classes.inputField}>
+              <input name="birthDate" onChange={handleChange} type="date" />
+          </div>
+          <div className={classes.inputField}>
+              <select onChange={handleChange} name="select" className={classes.select}>
+                  <option value="Star">&#9733;</option>
+                  <option value="Heart">&#10084;</option>
+                  <option value="Octagon">&#11042;</option>
+              </select>
+          </div>
+          <input type="submit" value="Send" className={classes.btn} />
         </form>
       </div>
     </div>
