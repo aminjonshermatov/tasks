@@ -21,4 +21,5 @@ form.addEventListener('submit', ev => {
     resultObj.select = select.value;
 
     console.log(resultObj);
+    console.log(JSON.stringify(resultObj));
 });
