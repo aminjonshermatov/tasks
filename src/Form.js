@@ -1,51 +1,89 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
+import { updateFormData } from './store/actions';
 import classes from './Form.module.css';
 
-const Form = () => {
+const Form = ({ formData, updateData }) => {
+  const { name, surname, birthDate, select } = formData;
+
   const handleChange = ev => {
-    const { name, value } = ev.target;
-    setFormData(prev => ({...prev, [name]: value}));
+    updateData(ev.target);
   };
 
-  const [formData, setFormData] = useState({
-    name: '',
-    surname: '',
-    birthDate: '',
-    select: ''
-  });
-
-  const handleSubmit = ev => {
-    ev.preventDefault();
-    console.log(formData);
-    // console.log(JSON.stringify(formData));
+  const handleBlur = () => {    
+    console.log(name);
+    console.log(surname);
+    console.log(birthDate);
+    console.log(select);
   };
 
   return (
     <div className={classes.wrapper}>
       <div className={classes.container}>
-        <form onSubmit={handleSubmit} className={classes.form}>
+        <form className={classes.form}>
           <h2 className={classes.title}>Form</h2>
           <div className={classes.inputField}>
-            <input name="name" onChange={handleChange} type="text" placeholder="Name" />
+            <input
+              value={name}
+              name="name"
+              onChange={handleChange}
+              type="text"
+              placeholder="Name"
+              onBlur={handleBlur}
+            />
           </div>
           <div className={classes.inputField}>
-              <input name="surname" onChange={handleChange} type="text" placeholder="Surmane" />
+              <input
+                value={surname}
+                name="surname"
+                onChange={handleChange}
+                type="text"
+                placeholder="Surmane"
+                onBlur={handleBlur}
+              />
           </div>
           <div className={classes.inputField}>
-              <input name="birthDate" onChange={handleChange} type="date" />
+              <input
+                value={birthDate}
+                name="birthDate"
+                onChange={handleChange}
+                type="date"
+                onBlur={handleBlur}
+              />
           </div>
           <div className={classes.inputField}>
-              <select onChange={handleChange} name="select" className={classes.select}>
+              <select
+                defaultValue={select}
+                onChange={handleChange}
+                name="select"
+                className={classes.select}
+              >
                   <option value="Star">&#9733;</option>
                   <option value="Heart">&#10084;</option>
                   <option value="Octagon">&#11042;</option>
               </select>
           </div>
-          <input type="submit" value="Send" className={classes.btn} />
         </form>
       </div>
     </div>
   );
 };
 
-export default Form;
+const mapStateToProps = state => {
+  return {
+    formData: state
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    updateData: formData => {
+      dispatch(updateFormData(formData));
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Form);
