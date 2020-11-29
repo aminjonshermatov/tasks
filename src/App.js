@@ -20,16 +20,12 @@ const App = () => {
     const classes = useStyles();
     return (
         <Provider store={store}>
-            <Grid container className={classes.root}>
-                <Grid item md={12}>
-                    <Grid container justify="center" spacing={2}>
-                        <Grid item md={5}>
-                            <Form />
-                        </Grid>
-                        <Grid item md={5}>
-                            <Result />
-                        </Grid>
-                    </Grid>
+            <Grid container className={classes.root} justify="center" spacing={2}>
+                <Grid item xs={5}>
+                    <Form />
+                </Grid>
+                <Grid item xs={5}>
+                    <Result />
                 </Grid>
             </Grid>
         </Provider>
