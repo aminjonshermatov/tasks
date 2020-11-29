@@ -1,4 +1,5 @@
 export const UPDATE_FORM_DATA = 'UPDATE_FORM_DATA';
+export const IS_FILLED = 'IS_FILLED';
 
 export const updateFormData = ({ name, value }) => {
     return {
@@ -6,6 +7,15 @@ export const updateFormData = ({ name, value }) => {
         payload: {
             name,
             value
+        }
+    };
+};
+
+export const isFilledFormData = boolData => {
+    return {
+        type: IS_FILLED,
+        payload: {
+            boolData
         }
     };
 };

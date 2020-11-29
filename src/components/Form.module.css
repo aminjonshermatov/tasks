@@ -1,16 +1,3 @@
-body {
-    background: rgb(255,247,250);
-    background: radial-gradient(circle, rgba(255,247,250,1) 0%, rgba(56,102,58,1) 100%);
-}
-
-.wrapper {
-    min-height: 100vh;
-    margin: 0 4rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .container {
     border: 1px solid #000;
     border-radius: 15px;

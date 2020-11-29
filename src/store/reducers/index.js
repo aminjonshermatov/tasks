@@ -1,16 +1,24 @@
-import { UPDATE_FORM_DATA } from "../actions";
+import {
+    UPDATE_FORM_DATA,
+    IS_FILLED
+} from "../actions";
 
 export const initialState = {
-    name: '',
-    surname: '',
-    birthDate: '',
-    select: ''
+    data: {
+        name: '',
+        surname: '',
+        birthDate: '',
+        select: ''
+    },
+    isFilled: false
 };
 
 export const reducer = (state = initialState, { type, payload }) => {
     switch (type) {
         case UPDATE_FORM_DATA:
             return reduceUpdateFormData(state, payload);
+        case IS_FILLED:
+            return reduceIsFilled(state, payload);
         default:
             return state;
     }
@@ -19,6 +27,13 @@ export const reducer = (state = initialState, { type, payload }) => {
 const reduceUpdateFormData = (state, { name, value }) => {
     return {
         ...state,
-        [name]: value
+        data: {...state.data, [name]: value}
+    };
+};
+
+const reduceIsFilled = (state, { boolData }) => {
+    return {
+        ...state,
+        isFilled: boolData
     };
 };
